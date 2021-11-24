@@ -68,8 +68,11 @@ lctrl + alt + cmd - p : yabai -m display --focus recent
 lctrl + alt + cmd + shift - p : yabai -m window --display recent; yabai -m display --focus recent
 
 # move floating window
-# shift + ctrl - a : yabai -m window --move rel:-20:0
-# shift + ctrl - s : yabai -m window --move rel:0:20
+alt + cmd - a : yabai -m window --move rel:-20:0
+alt + cmd - s : yabai -m window --move rel:0:20
+alt + cmd - d : yabai -m window --move rel:20:0
+alt + cmd - w : yabai -m window --move rel:0:-20
+
 
 # resize windows
 alt + shift - h : yabai -m window --resize left:-50:0; \
