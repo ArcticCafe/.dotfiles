@@ -19,6 +19,8 @@ Plug 'myusuf3/numbers.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'rstacruz/vim-closer'
+
 
 call plug#end()
 
@@ -27,8 +29,6 @@ call plug#end()
 " nerdtree settings
 nnoremap <leader>t :NERDTreeToggle<CR>
 
-" Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
 
 
 " change the air-line-theme
@@ -40,5 +40,5 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nnoremap <C-i> :PlugInstall<CR> " install the plugins
+nnoremap <leader>i :PlugInstall<CR> " install the plugins
 
