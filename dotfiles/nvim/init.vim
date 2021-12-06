@@ -20,6 +20,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rstacruz/vim-closer'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 
 call plug#end()
@@ -41,4 +42,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 nnoremap <leader>i :PlugInstall<CR> " install the plugins
+nnoremap <leader>p :MarkdownPreview<CR>
+nnoremap <leader>s :MarkdownPreviewStop<CR>
 
