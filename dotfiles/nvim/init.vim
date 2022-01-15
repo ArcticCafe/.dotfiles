@@ -44,13 +44,13 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" " Copy to clipboard
+" Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
 nnoremap  <leader>y  "+y
 nnoremap  <leader>yy  "+yy
 
-" " Paste from clipboard
+" Paste from clipboard
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
@@ -62,3 +62,7 @@ nnoremap <leader>s :MarkdownPreviewStop<CR>
 
 " jk to normal mode
 inoremap jk <Esc>
+
+
+" cancel the highlight
+nnoremap <leader>c :nohl<CR>
