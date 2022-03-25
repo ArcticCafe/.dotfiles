@@ -31,7 +31,7 @@ alert = #bd2c40
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 27
+height = 40
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
@@ -52,15 +52,15 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Siji:style=Regular
-font-1 = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular
-font-2 = "Tamsyn:pixelsize=12;0"
-font-3 = "Roboto:size=11:weight=bold;2"
-font-4 = "Noto Sans:size=11;1"
+font-0 = Siji:size=12:style=Regular
+font-1 = Font Awesome 5 Free:style=Solid:pixelsize=10:antialias=false;3
+font-2 = Font Awesome 5 Brands:style=Solid:pixelsize=10:antialias=false;3
+font-3 = "Roboto:size=12:weight=bold;2"
+font-4 = "Noto Sans:size=12;1"
 
 modules-left = i3
 modules-center = title
-modules-right = pulseaudio memory cpu wlan eth temperature date powermenu
+modules-right = pulseaudio memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
 tray-padding = 1
@@ -236,7 +236,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlan0
+interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -381,7 +381,7 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input
 
 format = <ramp> <label>
 format-underline = #f50a4d
@@ -425,6 +425,39 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
 
 [settings]
 screenchange-reload = true
