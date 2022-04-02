@@ -112,3 +112,8 @@ alias nn="neofetch"
 alias p="pfetch"
 alias vim="nvim"
 alias ra="ranger"
+alias ssh="kitty +kitten ssh"
+export PATH=~/.npm-global/bin:$PATH
+export PATH=$HOME/.config/rofi/bin:$PATH
+
+eval $(thefuck --alias)
