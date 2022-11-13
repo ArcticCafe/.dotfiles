@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/helix/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -112,7 +112,7 @@ alias nn="neofetch"
 alias p="pfetch"
 alias vim="nvim"
 alias ra="ranger"
-alias ssh="kitty +kitten ssh"
+#alias ssh="kitty +kitten ssh"
 export PATH=~/.npm-global/bin:$PATH
 export PATH=$HOME/.config/rofi/bin:$PATH
 
