@@ -8,6 +8,7 @@ set shiftwidth=4
 set autoindent
 set clipboard=unnamedplus
 set cursorline
+set shiftround
 
 let mapleader = " "
 " Plugins will be downloaded under the specified directory.
@@ -20,7 +21,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rstacruz/vim-closer'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 call plug#end()
 
@@ -63,6 +64,6 @@ nnoremap <leader>s :MarkdownPreviewStop<CR>
 " jk to normal mode
 inoremap jk <Esc>
 
+" <c-d> to delete a line
+inoremap <C-d> <Esc>ddi
 
-" cancel the highlight
-nnoremap <leader>c :nohl<CR>
