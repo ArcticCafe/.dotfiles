@@ -36,9 +36,9 @@ nnoremap <leader>t :NERDTreeToggle<CR>
 set clipboard=
 
 " change the air-line-theme
-let g:airline_theme='minimalist'
+let g:airline_theme='deus'
 
-" mapping
+" mappings ---------------------- {{{
 " focus movement
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -82,4 +82,11 @@ noremap <leader>0 :tablast<cr>
 
 " <c-d> to delete a line
 inoremap <C-d> <Esc>ddi
+" }}}
 
+" Vimscript file settings ---------------------- {{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker 
+augroup END
+" }}}
