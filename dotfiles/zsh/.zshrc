@@ -74,6 +74,8 @@ plugins=(
 git
 zsh-syntax-highlighting
 zsh-autosuggestions
+zsh-fzf-history-search
+fzf-tab
 )
 
 source $ZSH/oh-my-zsh.sh
