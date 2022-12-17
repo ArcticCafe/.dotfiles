@@ -57,6 +57,19 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
+" disable highlight search
+nnoremap <leader>n :set hlsearch!<CR>
+
+" Move to the begin/end of the line
+nnoremap H 0
+nnoremap L $
+nnoremap J L
+nnoremap K H
+
+
+" map <Esc> to exit terminal-mode
+:tnoremap jk <C-\><C-n>
+
 " edit vim config
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>es :source $MYVIMRC<CR>

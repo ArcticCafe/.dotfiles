@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="nanotech"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,9 +70,10 @@ ZSH_THEME="nanotech"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git 
-    zsh-syntax-highlighting
-    zsh-autosuggestions
+plugins=(
+git
+zsh-syntax-highlighting
+zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -93,27 +94,42 @@ source $ZSH/oh-my-zsh.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+#
+
+# where proxy
+proxy () {
+  export http_proxy="http://127.0.0.1:1087"
+  export sock5_proxy="sock5://127.0.0.1:1080"
+  echo "HTTP Proxy on"
+}
+
+# where noproxy
+noproxy () {
+  unset http_proxy
+  unset sock5_proxy
+  echo "HTTP Proxy off"
+}
+
+export EDITOR='nvim'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-#
-# aliases
-alias i3config="nvim ~/.config/i3/config"
-alias zshconfig="nvim ~/.zshrc"
-alias omz="nvim ~/.oh-my-zsh"
-alias vimconfig="nvim ~/.config/nvim/init.vim"
-alias i3config="nvim ~/.config/i3/config"
-alias c="clear"
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias l="ls -al"
-alias nn="neofetch"
-alias p="pfetch"
+alias c="clear"
+alias zshconfig="nvim ~/.zshrc"
+alias ss="source ~/.zshrc"
 alias vim="nvim"
+alias vimconfig="nvim ~/.config/nvim/init.vim"
 alias ra="ranger"
-#alias ssh="kitty +kitten ssh"
-export PATH=~/.npm-global/bin:$PATH
-export PATH=$HOME/.config/rofi/bin:$PATH
 
-eval $(thefuck --alias)
+#functions
+# fh - repeat history
+fh() {
+  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+}
