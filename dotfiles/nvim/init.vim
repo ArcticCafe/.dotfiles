@@ -9,6 +9,7 @@ set autoindent
 set clipboard=unnamedplus
 set cursorline
 set shiftround
+set switchbuf+=usetab,newtab
 
 let mapleader = " "
 " Plugins will be downloaded under the specified directory.
@@ -22,6 +23,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'rstacruz/vim-closer'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'junegunn/fzf'
 
 call plug#end()
 
@@ -78,6 +80,11 @@ nnoremap <leader>i :PlugInstall<CR> " install the plugins
 nnoremap <leader>m :MarkdownPreview<CR>
 nnoremap <leader>s :MarkdownPreviewStop<CR>
 
+" fzf
+"let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+nnoremap <leader>p :FZF<CR>
+nnoremap <leader>g :FZF 
+
 " jk to normal mode
 inoremap jk <Esc>
 
@@ -95,6 +102,9 @@ noremap <leader>0 :tablast<cr>
 
 " <c-d> to delete a line
 inoremap <C-d> <Esc>ddi
+
+" vim grep word
+
 " }}}
 
 " Vimscript file settings ---------------------- {{{
