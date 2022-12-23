@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="awesomepanda"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -72,6 +72,7 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 git
+z
 zsh-syntax-highlighting
 zsh-autosuggestions
 zsh-fzf-history-search
@@ -116,6 +117,8 @@ export EDITOR='nvim'
 
 export FZF_DEFAULT_COMMAND="find ."
 
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -124,16 +127,26 @@ export FZF_DEFAULT_COMMAND="find ."
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias l="ls -al"
+alias l="exa -al --icons"
+alias lt="exa --tree --icons -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints'"
 alias c="clear"
 alias zshconfig="nvim ~/.zshrc"
 alias ss="source ~/.zshrc"
 alias vim="nvim"
 alias vimconfig="nvim ~/.config/nvim/init.vim"
 alias ra="ranger"
+alias bathelp='bat --plain --language=help'
 
 #functions
 # fh - repeat history
 fh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+}
+
+batdiff() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+}
+
+help() {
+    "$@" --help 2>&1 | bathelp
 }
