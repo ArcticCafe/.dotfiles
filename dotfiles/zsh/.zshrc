@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -132,6 +133,7 @@ alias lt="exa --tree --icons -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoi
 alias c="clear"
 alias zshconfig="nvim ~/.zshrc"
 alias ss="source ~/.zshrc"
+alias nn="neofetch"
 alias vim="nvim"
 alias vimconfig="nvim ~/.config/nvim/init.vim"
 alias ra="ranger"
@@ -150,3 +152,7 @@ batdiff() {
 help() {
     "$@" --help 2>&1 | bathelp
 }
+
+
+# starship
+eval "$(starship init zsh)"

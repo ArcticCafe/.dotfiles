@@ -16,6 +16,7 @@ let mapleader = " "
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 Plug 'preservim/nerdtree'
+Plug 'mhinz/vim-startify'
 Plug 'myusuf3/numbers.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
@@ -23,9 +24,15 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'rstacruz/vim-closer'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
+
+" rust-lang
+syntax enable
+filetype plugin indent on
 
 " Chinese character
 set fileencodings=utf8,cp936,gb18030,big5
@@ -83,7 +90,7 @@ nnoremap <leader>s :MarkdownPreviewStop<CR>
 " fzf
 "let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 nnoremap <leader>p :FZF<CR>
-nnoremap <leader>g :FZF 
+nnoremap <leader>g :Ag 
 
 " jk to normal mode
 inoremap jk <Esc>
