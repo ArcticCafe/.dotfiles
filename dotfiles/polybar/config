@@ -18,12 +18,12 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #aa2f383e
+background = #161320
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
-foreground = #f2ddb5
-foreground-alt = #555
-primary = #ffb52a
+foreground = #f2cdcd
+foreground-alt = #f5e0dc
+primary = #c9cbff
 secondary = #e60053
 alert = #bd2c40
 
@@ -31,7 +31,7 @@ alert = #bd2c40
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 27
+height = 40
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
@@ -52,19 +52,19 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Siji:style=Regular
-font-1 = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular
-font-2 = "Tamsyn:pixelsize=12;0"
-font-3 = "Roboto:size=11:weight=bold;2"
-font-4 = "Noto Sans:size=11;1"
+font-0 = Iosevka:size=14:style=bold;2
+font-1 = Siji:size=12:style=Regular
+font-2 = Font Awesome 5 Free:style=Solid:pixelsize=10:antialias=false;3
+font-3 = Font Awesome 5 Brands:style=Solid:pixelsize=10:antialias=false;3
+font-4 = Roboto:size=12:weight=bold;2
 
 modules-left = i3
 modules-center = title
-modules-right = pulseaudio memory cpu wlan eth temperature date bluetooth powermenu
+modules-right = pulseaudio memory cpu wlan eth battery temperature date powermenu
 
-tray-position = none
-tray-padding = 0
-tray-background = #0063ff
+tray-position = right
+tray-padding = 1
+tray-background = #575268
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -223,7 +223,7 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+format-underline = #b5e8e0
 label = %percentage:2%%
 
 [module/memory]
@@ -231,16 +231,16 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-underline = #96cdfb
 label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlan0
+interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+format-connected-underline = #abe9b3
 label-connected = %essid%
 
 format-disconnected =
@@ -284,17 +284,9 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = #f28fad
 
 label = %date% %time%
-
-[module/bluetooth]
-type = custom/script
-exec = rofi-bluetooth --status
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
-click-left = rofi-bluetooth &
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -307,11 +299,11 @@ label-muted = muted
 label-muted-foreground = #666
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-0 = #89dceb
+bar-volume-foreground-1 = #89dceb
+bar-volume-foreground-2 = #89dceb
+bar-volume-foreground-3 = #89dceb
+bar-volume-foreground-4 = #89dceb
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
@@ -358,7 +350,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 ;full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = #ddb6f2
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
@@ -389,10 +381,10 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = #f8bd96
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -433,6 +425,39 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ddb6f2
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
 
 [settings]
 screenchange-reload = true
