@@ -26,6 +26,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'jceb/vim-orgmode'
 Plug 'rust-lang/rust.vim'
 
 call plug#end()
@@ -89,7 +90,7 @@ nnoremap <leader>s :MarkdownPreviewStop<CR>
 
 " fzf
 "let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-nnoremap <leader>p :FZF<CR>
+nnoremap <leader>o :FZF<CR>
 nnoremap <leader>g :Ag 
 
 " jk to normal mode
