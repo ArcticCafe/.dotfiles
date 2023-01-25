@@ -104,6 +104,7 @@ source $ZSH/oh-my-zsh.sh
 proxy () {
   export http_proxy="http://127.0.0.1:1087"
   export sock5_proxy="sock5://127.0.0.1:1080"
+  export ALL_PROXY="socks5://127.0.0.1:1080"
   echo "HTTP Proxy on"
 }
 
@@ -111,6 +112,7 @@ proxy () {
 noproxy () {
   unset http_proxy
   unset sock5_proxy
+  unset ALL_PROXY
   echo "HTTP Proxy off"
 }
 
@@ -150,7 +152,7 @@ batdiff() {
 }
 
 help() {
-    "$@" --help 2>&1 | bathelp
+    "$@" --help 2>&1 | bathelp --theme Dracula
 }
 
 
